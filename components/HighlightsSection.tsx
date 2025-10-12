@@ -3,11 +3,13 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { useRouter } from 'next/navigation'
 import { GraduationCap, Code, Briefcase, Rocket } from 'lucide-react'
 
 export default function HighlightsSection() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const router = useRouter()
 
   const features = [
     {
@@ -16,6 +18,7 @@ export default function HighlightsSection() {
       description: 'Master coding with expert-led courses and hands-on projects',
       color: 'from-primary to-secondary',
       direction: 'left',
+      link: '/courses',
     },
     {
       icon: Code,
@@ -23,6 +26,7 @@ export default function HighlightsSection() {
       description: 'Solve real-world problems with our interactive coding platform',
       color: 'from-secondary to-accent',
       direction: 'bottom',
+      link: '/practice',
     },
     {
       icon: Briefcase,
@@ -30,6 +34,7 @@ export default function HighlightsSection() {
       description: 'Gain practical experience with industry internship opportunities',
       color: 'from-accent to-primary',
       direction: 'top',
+      link: '/internships',
     },
     {
       icon: Rocket,
@@ -37,6 +42,7 @@ export default function HighlightsSection() {
       description: 'Transform your business with our cutting-edge IT services',
       color: 'from-primary to-accent',
       direction: 'right',
+      link: '/services',
     },
   ]
 
@@ -51,18 +57,18 @@ export default function HighlightsSection() {
   }
 
   return (
-    <section ref={ref} className="relative py-20 px-4 z-10">
+    <section ref={ref} className="relative py-12 sm:py-16 lg:py-20 px-4 sm:px-6 z-10">
       <div className="max-w-7xl mx-auto">
         <motion.h2
-          className="text-4xl md:text-5xl font-bold text-center mb-16 text-glow"
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-10 sm:mb-12 lg:mb-16 text-glow"
           initial={{ opacity: 0, y: -50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          Why Choose <span className="text-primary">Inai One?</span>
+          Why Choose <span className="text-primary">Tech Forge?</span>
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
           {features.map((feature, index) => {
             const Icon = feature.icon
             const initialPos = getInitialPosition(feature.direction)
@@ -70,13 +76,14 @@ export default function HighlightsSection() {
             return (
               <motion.div
                 key={index}
-                className="relative group"
+                className="relative group cursor-pointer"
                 initial={{ ...initialPos, opacity: 0 }}
                 animate={isInView ? { x: 0, y: 0, opacity: 1 } : {}}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
+                onClick={() => router.push(feature.link)}
               >
                 <motion.div
-                  className="bg-dark-200 rounded-2xl p-8 border border-primary/20 h-full relative overflow-hidden"
+                  className="bg-dark-200 rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 border border-primary/20 h-full relative overflow-hidden"
                   whileHover={{ scale: 1.05, borderColor: 'rgba(0, 255, 133, 0.5)' }}
                   transition={{ duration: 0.3 }}
                 >
@@ -85,7 +92,7 @@ export default function HighlightsSection() {
                   
                   {/* Image placeholder with icon */}
                   <motion.div
-                    className="relative w-full h-32 bg-gradient-to-br from-dark-100 to-dark-300 rounded-xl mb-6 overflow-hidden"
+                    className="relative w-full h-28 sm:h-32 bg-gradient-to-br from-dark-100 to-dark-300 rounded-lg sm:rounded-xl mb-4 sm:mb-6 overflow-hidden"
                     whileHover={{ scale: 1.05 }}
                   >
                     {/* Animated gradient overlay */}
@@ -114,7 +121,7 @@ export default function HighlightsSection() {
                           ease: 'easeInOut',
                         }}
                       >
-                        <Icon className="text-primary" size={48} />
+                        <Icon className="text-primary" size={40} />
                       </motion.div>
                     </div>
 
@@ -135,18 +142,18 @@ export default function HighlightsSection() {
                   
                   {/* Icon badge */}
                   <motion.div
-                    className={`w-16 h-16 rounded-full bg-gradient-to-br ${feature.color} flex items-center justify-center mb-6 relative z-10`}
+                    className={`w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full bg-gradient-to-br ${feature.color} flex items-center justify-center mb-4 sm:mb-6 relative z-10`}
                     whileHover={{ rotate: 360, scale: 1.1 }}
                     transition={{ duration: 0.6 }}
                   >
-                    <Icon className="text-dark-100" size={32} />
+                    <Icon className="text-dark-100" size={24} />
                   </motion.div>
 
                   {/* Content */}
-                  <h3 className="text-2xl font-bold mb-4 text-primary relative z-10">
+                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold mb-2 sm:mb-4 text-primary relative z-10">
                     {feature.title}
                   </h3>
-                  <p className="text-text-muted relative z-10">
+                  <p className="text-sm sm:text-base text-text-muted relative z-10">
                     {feature.description}
                   </p>
 

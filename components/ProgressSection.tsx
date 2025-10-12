@@ -103,7 +103,7 @@ export default function ProgressSection() {
             </h2>
             
             <p className="text-xl text-text-muted leading-relaxed">
-              Visualize your coding progress and earn verified Inai One certificates instantly. 
+              Visualize your coding progress and earn verified Tech Forge certificates instantly. 
               Build your portfolio with industry-recognized credentials.
             </p>
 
@@ -130,7 +130,7 @@ export default function ProgressSection() {
                 <p className="text-text-muted">has successfully completed</p>
                 <p className="text-xl font-semibold text-secondary">Full Stack Development Course</p>
                 <div className="pt-4 border-t border-primary/20">
-                  <p className="text-sm text-text-muted">Inai One • 2025</p>
+                  <p className="text-sm text-text-muted">Tech Forge • 2025</p>
                 </div>
               </div>
 

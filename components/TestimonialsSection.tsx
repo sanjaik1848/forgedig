@@ -16,7 +16,7 @@ export default function TestimonialsSection() {
       role: 'Full Stack Developer',
       company: 'Tech Solutions Inc.',
       image: '👩‍💻',
-      quote: 'Inai One transformed my career! The hands-on projects and expert mentorship helped me land my dream job as a Full Stack Developer.',
+      quote: 'Tech Forge transformed my career! The hands-on projects and expert mentorship helped me land my dream job as a Full Stack Developer.',
       type: 'student',
     },
     {
@@ -30,7 +30,7 @@ export default function TestimonialsSection() {
     {
       name: 'Ananya Patel',
       role: 'IoT Intern',
-      company: 'Inai One',
+      company: 'Tech Forge',
       image: '👩‍🔬',
       quote: 'The IoT internship program was incredible. I built real-world projects and gained practical skills that made me industry-ready.',
       type: 'student',
@@ -128,7 +128,7 @@ export default function TestimonialsSection() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
                   >
-                    "{testimonials[currentIndex].quote}"
+                    &quot;{testimonials[currentIndex].quote}&quot;
                   </motion.p>
 
                   <motion.div

@@ -17,16 +17,18 @@ export default function Home() {
   return (
     <main className="relative min-h-screen gradient-bg">
       <AnimatedBackground />
-      <HeroSection />
-      <HighlightsSection />
-      <ImageGallerySection />
-      <HorizontalScrollSection />
-      <ScrollRevealSection />
-      <ProgressSection />
-      <IDESection />
-      <InternshipServicesSection />
-      <TestimonialsSection />
-      <Footer />
+      <div className="relative z-10">
+        <HeroSection />
+        <HighlightsSection />
+        <ImageGallerySection />
+        <HorizontalScrollSection />
+        <ScrollRevealSection />
+        <ProgressSection />
+        <IDESection />
+        <InternshipServicesSection />
+        <TestimonialsSection />
+        <Footer />
+      </div>
       <ChatbotAssistant />
     </main>
   )

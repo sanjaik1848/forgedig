@@ -30,22 +30,100 @@ export default function HorizontalScrollSection() {
     <section ref={containerRef} className="relative py-32 overflow-hidden z-10">
       <div className="max-w-7xl mx-auto px-4 mb-12">
         <motion.div
-          className="text-center"
+          className="text-center relative"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <Sparkles className="text-primary" size={32} />
-            <h2 className="text-4xl md:text-5xl font-bold text-glow">
+          {/* Animated background text */}
+          <motion.div
+            className="absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none overflow-hidden"
+            animate={{
+              scale: [1, 1.1, 1],
+              opacity: [0.05, 0.08, 0.05],
+            }}
+            transition={{ duration: 4, repeat: Infinity }}
+          >
+            <span className="text-9xl font-bold text-primary">TECH</span>
+          </motion.div>
+
+          <div className="flex items-center justify-center gap-3 mb-4 relative z-10">
+            <motion.div
+              animate={{
+                rotate: [0, 360],
+                scale: [1, 1.2, 1],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+            >
+              <Sparkles className="text-primary" size={32} />
+            </motion.div>
+            
+            <motion.h2
+              className="text-4xl md:text-5xl font-bold text-glow"
+              animate={{
+                textShadow: [
+                  '0 0 20px rgba(0, 255, 133, 0.5)',
+                  '0 0 40px rgba(0, 255, 133, 0.8)',
+                  '0 0 20px rgba(0, 255, 133, 0.5)',
+                ],
+              }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
               Master <span className="text-primary">Modern Technologies</span>
-            </h2>
-            <Sparkles className="text-accent" size={32} />
+            </motion.h2>
+            
+            <motion.div
+              animate={{
+                rotate: [0, -360],
+                scale: [1, 1.2, 1],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+            >
+              <Sparkles className="text-accent" size={32} />
+            </motion.div>
           </div>
-          <p className="text-xl text-text-muted">
+
+          <motion.p
+            className="text-xl text-text-muted relative z-10"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+          >
             Learn the most in-demand tech stack used by industry leaders
-          </p>
+          </motion.p>
+
+          {/* Floating particles around title */}
+          {[...Array(12)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-2 h-2 bg-primary rounded-full"
+              style={{
+                left: `${20 + (i * 5)}%`,
+                top: `${30 + Math.sin(i) * 20}%`,
+              }}
+              animate={{
+                y: [0, -30, 0],
+                opacity: [0, 1, 0],
+                scale: [0, 1.5, 0],
+              }}
+              transition={{
+                duration: 3,
+                delay: i * 0.2,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+            />
+          ))}
         </motion.div>
       </div>
 

@@ -3,12 +3,14 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { Cpu, Layers, TrendingUp, Globe, BarChart, Search, Megaphone } from 'lucide-react'
 
 export default function InternshipServicesSection() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
   const [flippedCard, setFlippedCard] = useState<number | null>(null)
+  const router = useRouter()
 
   const internships = [
     {
@@ -140,6 +142,7 @@ export default function InternshipServicesSection() {
                           className="px-8 py-3 bg-dark-100 text-white rounded-full font-semibold text-lg"
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.9 }}
+                          onClick={() => router.push('/internships')}
                         >
                           Apply Now
                         </motion.button>

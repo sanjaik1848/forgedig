@@ -221,32 +221,32 @@ export default function CoursesPage() {
       <div className="relative z-10 pt-12 pb-20">
         {/* Hero Section */}
         <motion.div
-          className="max-w-7xl mx-auto px-4 text-center mb-16"
+          className="max-w-7xl mx-auto px-4 sm:px-6 text-center mb-12 sm:mb-16"
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
         >
           <motion.h1
-            className="text-5xl md:text-7xl font-bold mb-6 text-glow"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 sm:mb-6 text-glow leading-tight"
             initial={{ scale: 0.9 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.5 }}
           >
             Explore Our <span className="text-primary">Courses</span>
           </motion.h1>
-          <p className="text-xl md:text-2xl text-text-muted max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-text-muted max-w-3xl mx-auto px-2">
             Learn from industry experts and master in-demand skills
           </p>
         </motion.div>
 
         {/* Stats */}
         <motion.div
-          className="max-w-7xl mx-auto px-4 mb-12"
+          className="max-w-7xl mx-auto px-4 sm:px-6 mb-8 sm:mb-12"
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
             {[
               { icon: BookOpen, value: '50+', label: 'Courses' },
               { icon: Users, value: '100K+', label: 'Students' },
@@ -255,15 +255,15 @@ export default function CoursesPage() {
             ].map((stat, index) => (
               <motion.div
                 key={index}
-                className="bg-dark-200 rounded-xl p-4 border border-primary/20 text-center"
+                className="bg-dark-200 rounded-xl p-3 sm:p-4 border border-primary/20 text-center"
                 whileHover={{ scale: 1.05 }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
               >
-                <stat.icon className="mx-auto text-primary mb-2" size={28} />
-                <div className="text-3xl font-bold text-primary">{stat.value}</div>
-                <div className="text-sm text-text-muted">{stat.label}</div>
+                <stat.icon className="mx-auto text-primary mb-2" size={24} />
+                <div className="text-2xl sm:text-3xl font-bold text-primary">{stat.value}</div>
+                <div className="text-xs sm:text-sm text-text-muted">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -271,38 +271,38 @@ export default function CoursesPage() {
 
         {/* Filters */}
         <motion.div
-          className="max-w-7xl mx-auto px-4 mb-12"
+          className="max-w-7xl mx-auto px-4 sm:px-6 mb-8 sm:mb-12"
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          <div className="bg-dark-200 rounded-2xl p-6 border border-primary/20">
+          <div className="bg-dark-200 rounded-2xl p-4 sm:p-6 border border-primary/20">
             {/* Search */}
-            <div className="mb-6">
+            <div className="mb-4 sm:mb-6">
               <div className="relative">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-text-muted" size={20} />
+                <Search className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-text-muted" size={18} />
                 <input
                   type="text"
                   placeholder="Search courses..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-dark-100 border border-primary/20 rounded-xl pl-12 pr-4 py-3 text-text-primary focus:outline-none focus:border-primary transition-colors"
+                  className="w-full bg-dark-100 border border-primary/20 rounded-xl pl-10 sm:pl-12 pr-3 sm:pr-4 py-2.5 sm:py-3 text-sm sm:text-base text-text-primary focus:outline-none focus:border-primary transition-colors"
                 />
               </div>
             </div>
 
             {/* Category Filter */}
-            <div className="mb-6">
+            <div className="mb-4 sm:mb-6">
               <div className="flex items-center gap-2 mb-3">
-                <Filter className="text-primary" size={20} />
-                <h3 className="font-semibold text-primary">Category</h3>
+                <Filter className="text-primary" size={18} />
+                <h3 className="text-sm sm:text-base font-semibold text-primary">Category</h3>
               </div>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-2 sm:gap-3">
                 {categories.map((cat) => (
                   <motion.button
                     key={cat.name}
                     onClick={() => setSelectedCategory(cat.name)}
-                    className={`px-4 py-2 rounded-full font-medium transition-all duration-300 flex items-center gap-2 ${
+                    className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 flex items-center gap-1.5 sm:gap-2 ${
                       selectedCategory === cat.name
                         ? 'bg-primary text-dark-100'
                         : 'bg-dark-100 text-text-muted border border-primary/20 hover:border-primary/50'
@@ -310,8 +310,9 @@ export default function CoursesPage() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <span>{cat.icon}</span>
-                    {cat.name}
+                    <span className="text-sm sm:text-base">{cat.icon}</span>
+                    <span className="hidden sm:inline">{cat.name}</span>
+                    <span className="sm:hidden">{cat.name.split(' ')[0]}</span>
                   </motion.button>
                 ))}
               </div>
@@ -320,15 +321,15 @@ export default function CoursesPage() {
             {/* Level Filter */}
             <div>
               <div className="flex items-center gap-2 mb-3">
-                <TrendingUp className="text-primary" size={20} />
-                <h3 className="font-semibold text-primary">Level</h3>
+                <TrendingUp className="text-primary" size={18} />
+                <h3 className="text-sm sm:text-base font-semibold text-primary">Level</h3>
               </div>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-2 sm:gap-3">
                 {levels.map((level) => (
                   <motion.button
                     key={level}
                     onClick={() => setSelectedLevel(level)}
-                    className={`px-4 py-2 rounded-full font-medium transition-all duration-300 ${
+                    className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${
                       selectedLevel === level
                         ? 'bg-primary text-dark-100'
                         : 'bg-dark-100 text-text-muted border border-primary/20 hover:border-primary/50'
@@ -345,8 +346,8 @@ export default function CoursesPage() {
         </motion.div>
 
         {/* Courses Grid */}
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {filteredCourses.map((course, index) => (
               <motion.div
                 key={course.id}
@@ -388,16 +389,16 @@ export default function CoursesPage() {
                 </div>
 
                 {/* Course Content */}
-                <div className="p-6">
+                <div className="p-4 sm:p-6">
                   <div className="flex items-center gap-2 mb-3">
                     <span className="text-sm text-text-muted">{course.category}</span>
                   </div>
                   
-                  <h3 className="text-xl font-bold mb-2 text-text-primary group-hover:text-primary transition-colors">
+                  <h3 className="text-lg sm:text-xl font-bold mb-2 text-text-primary group-hover:text-primary transition-colors">
                     {course.title}
                   </h3>
                   
-                  <p className="text-text-muted text-sm mb-4 line-clamp-2">
+                  <p className="text-text-muted text-xs sm:text-sm mb-4 line-clamp-2">
                     {course.description}
                   </p>
 
@@ -444,10 +445,10 @@ export default function CoursesPage() {
                   </div>
 
                   {/* Price & CTA */}
-                  <div className="flex items-center justify-between">
-                    <div className="text-3xl font-bold text-primary">{course.price}</div>
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="text-2xl sm:text-3xl font-bold text-primary">{course.price}</div>
                     <motion.button
-                      className="px-6 py-2 rounded-full bg-gradient-to-r from-primary to-secondary text-dark-100 font-semibold"
+                      className="px-4 sm:px-6 py-2 rounded-full bg-gradient-to-r from-primary to-secondary text-dark-100 text-sm sm:text-base font-semibold"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
