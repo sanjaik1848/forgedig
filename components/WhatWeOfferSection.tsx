@@ -1,7 +1,8 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 import { useRouter } from 'next/navigation'
+import { useRef } from 'react'
 import {
   BookOpen,
   Code,
@@ -104,9 +105,17 @@ const cardVariants = {
 
 export default function WhatWeOfferSection() {
   const router = useRouter()
+  const sectionRef = useRef(null)
+  const isInView = useInView(sectionRef, { once: true, margin: '-60px' })
 
   return (
-    <section className="relative py-24 px-4 sm:px-6 overflow-hidden">
+    <motion.section
+      ref={sectionRef}
+      className="relative py-24 px-4 sm:px-6 overflow-hidden"
+      initial={{ opacity: 0 }}
+      animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+      transition={{ duration: 0.6 }}
+    >
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
 
@@ -222,6 +231,6 @@ export default function WhatWeOfferSection() {
           </motion.button>
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   )
 }

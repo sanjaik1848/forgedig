@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useInView } from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import {
   ChevronLeft,
@@ -360,6 +360,8 @@ export default function FeatureShowcaseSlider() {
   const [dir, setDir] = useState(1)
   const router = useRouter()
   const timerRef = useRef<NodeJS.Timeout | null>(null)
+  const sectionRef = useRef(null)
+  const isInView = useInView(sectionRef, { once: true, margin: '-80px' })
 
   const startTimer = () => {
     if (timerRef.current) clearInterval(timerRef.current)
@@ -391,7 +393,13 @@ export default function FeatureShowcaseSlider() {
   }
 
   return (
-    <section className="relative py-20 px-4 sm:px-6 overflow-hidden">
+    <motion.section
+      ref={sectionRef}
+      className="relative py-20 px-4 sm:px-6 overflow-hidden"
+      initial={{ opacity: 0 }}
+      animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+      transition={{ duration: 0.6 }}
+    >
       {/* Dynamic background glow */}
       <motion.div
         className="absolute inset-0 pointer-events-none"
@@ -403,27 +411,34 @@ export default function FeatureShowcaseSlider() {
         {/* Header */}
         <motion.div
           className="text-center mb-12"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          initial={{ opacity: 0, y: -30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -30 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
         >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-4">
             <Play size={14} />
-            Feature Showcase
+            Interactive Feature Tour
           </div>
-          <h2 className="text-4xl sm:text-5xl font-bold mb-3">
-            Everything in{' '}
+          <h2 className="text-4xl sm:text-5xl font-bold mb-2">
+            Courses,{' '}
             <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-              One Place
-            </span>
+              IDE, Practice
+            </span>{' '}
+            &amp; More
           </h2>
-          <p className="text-text-muted text-lg max-w-xl mx-auto">
-            See what makes Forge Digital Solution your ultimate tech companion
+          <p className="text-text-muted text-base sm:text-lg max-w-2xl mx-auto mt-3">
+            Explore each feature of Forge Digital Solution with a live interactive preview —
+            {' '}see exactly what you get before you dive in.
           </p>
         </motion.div>
 
-        {/* Slide Nav Dots */}
-        <div className="flex justify-center gap-3 mb-8">
+        {/* Slide Nav Tabs */}
+        <motion.div
+          className="flex flex-wrap justify-center gap-3 mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6, delay: 0.25 }}
+        >
           {slides.map((s, i) => {
             const SIcon = s.icon
             return (
@@ -443,10 +458,15 @@ export default function FeatureShowcaseSlider() {
               </motion.button>
             )
           })}
-        </div>
+        </motion.div>
 
         {/* Main Slide */}
-        <div className="relative">
+        <motion.div
+          className="relative"
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+          transition={{ duration: 0.7, delay: 0.35 }}
+        >
           <AnimatePresence custom={dir} mode="wait">
             <motion.div
               key={current}
@@ -544,7 +564,7 @@ export default function FeatureShowcaseSlider() {
           >
             <ChevronRight size={20} />
           </button>
-        </div>
+        </motion.div>
 
         {/* Progress bar */}
         <div className="flex justify-center gap-2 mt-10">
@@ -563,6 +583,6 @@ export default function FeatureShowcaseSlider() {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   )
 }
