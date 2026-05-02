@@ -271,7 +271,7 @@ export default function ServiceDetailPage() {
             Ready to Get Started?
           </h2>
           <p className="text-text-muted mb-6">
-            Let's discuss your project and bring your ideas to life
+            Let&apos;s discuss your project and bring your ideas to life
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <motion.button

@@ -7,7 +7,7 @@ const localFilePath = path.join(process.cwd(), 'data', 'content.json')
 
 export async function GET() {
   // Try Supabase first if keys are present
-  if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+  if (supabase && process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
     try {
       const { data, error } = await supabase
         .from('site_content')
@@ -15,7 +15,7 @@ export async function GET() {
         .single()
       
       if (data) return NextResponse.json(data.content)
-      if (error && error.code !== 'PGRST116') { // PGRST116 is 'no rows found'
+      if (error && error.code !== 'PGRST116') {
         console.error('Supabase error:', error)
       }
     } catch (err) {
@@ -36,7 +36,7 @@ export async function POST(request: Request) {
   const newData = await request.json()
 
   // Update Supabase if keys are present
-  if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+  if (supabase && process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
     try {
       const { error } = await supabase
         .from('site_content')

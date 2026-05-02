@@ -1,12 +1,13 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { Code2, Menu, X, Home, Code, Trophy, Briefcase, BookOpen, GraduationCap, Terminal, Award, LogIn, LogOut, User, Github } from 'lucide-react'
 
 export default function Navbar() {
+  type NavItem = { name: string; href: string; icon: React.ElementType }
   const [isOpen, setIsOpen] = useState(false)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [userEmail, setUserEmail] = useState('')
@@ -41,7 +42,7 @@ export default function Navbar() {
     Home, Briefcase, BookOpen, Code, Terminal, Trophy, Award
   }
 
-  const navItems = content?.links?.map((link: any) => ({
+  const navItems: NavItem[] = content?.links?.map((link: { name: string; href: string; icon: string }) => ({
     ...link,
     icon: iconMap[link.icon] || Code
   })) || [

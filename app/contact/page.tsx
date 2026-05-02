@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import {
   Mail,
@@ -20,7 +20,6 @@ import {
   Youtube,
   Globe,
 } from 'lucide-react'
-import { useState, useEffect } from 'react'
 import AnimatedBackground from '@/components/AnimatedBackground'
 
 export default function ContactPage() {
@@ -129,7 +128,6 @@ ${formData.message}
       email: content?.footer?.email || 'forgedigsoluton@gmail.com',
       isHeadquarters: true,
     },
-    },
   ]
 
   const services = [
@@ -163,7 +161,7 @@ ${formData.message}
             Get in <span className="text-primary">Touch</span>
           </motion.h1>
           <p className="text-base sm:text-lg md:text-xl text-text-muted max-w-3xl mx-auto px-2">
-            Have a question or want to work together? We'd love to hear from you!
+            Have a question or want to work together? We&apos;d love to hear from you!
           </p>
         </motion.div>
 
@@ -223,7 +221,7 @@ ${formData.message}
                 <CheckCircle className="mx-auto text-primary mb-4" size={48} />
                 <h3 className="text-xl font-bold text-primary mb-2">Message Sent!</h3>
                 <p className="text-text-muted">
-                  Thank you for contacting us. We'll get back to you soon!
+                  Thank you for contacting us. We&apos;ll get back to you soon!
                 </p>
               </motion.div>
             ) : (
