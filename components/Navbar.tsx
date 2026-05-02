@@ -4,12 +4,13 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { Code2, Menu, X, Home, Code, Trophy, Briefcase, BookOpen, GraduationCap, Terminal, Award, LogIn, LogOut, User } from 'lucide-react'
+import { Code2, Menu, X, Home, Code, Trophy, Briefcase, BookOpen, GraduationCap, Terminal, Award, LogIn, LogOut, User, Github } from 'lucide-react'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [userEmail, setUserEmail] = useState('')
+  const [content, setContent] = useState<any>(null)
   const router = useRouter()
 
   useEffect(() => {
@@ -19,6 +20,10 @@ export default function Navbar() {
 
     setIsAuthenticated(authStatus === 'true')
     setUserEmail(email || '')
+
+    fetch('/api/content')
+      .then(res => res.json())
+      .then(data => setContent(data.navbar))
   }, [])
 
   const handleLogout = () => {
@@ -32,7 +37,14 @@ export default function Navbar() {
     router.push('/')
   }
 
-  const navItems = [
+  const iconMap: { [key: string]: any } = {
+    Home, Briefcase, BookOpen, Code, Terminal, Trophy, Award
+  }
+
+  const navItems = content?.links?.map((link: any) => ({
+    ...link,
+    icon: iconMap[link.icon] || Code
+  })) || [
     { name: 'Home', href: '/', icon: Home },
     { name: 'Services', href: '/services', icon: Briefcase },
     { name: 'Courses', href: '/courses', icon: BookOpen },
@@ -59,12 +71,12 @@ export default function Navbar() {
               whileHover={{ scale: 1.05 }}
             >
               <Code2 className="text-primary group-hover:rotate-12 transition-transform" size={32} />
-              <span className="text-xl font-bold text-primary">Tech Forge</span>
+              <span className="text-xl font-bold text-primary">{content?.brandName || 'Forge'}</span>
             </motion.div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-4 xl:gap-6">
             {navItems.map((item) => {
               const Icon = item.icon
               return (
@@ -75,7 +87,7 @@ export default function Navbar() {
                     whileTap={{ scale: 0.95 }}
                   >
                     <Icon size={18} />
-                    <span className="font-medium">{item.name}</span>
+                    <span className="font-medium text-sm xl:text-base">{item.name}</span>
                   </motion.div>
                 </Link>
               )
@@ -133,7 +145,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-primary p-2"
+            className="lg:hidden text-primary p-2"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}

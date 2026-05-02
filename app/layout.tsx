@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import Navbar from '@/components/Navbar'
 
 export const metadata: Metadata = {
-  title: 'Tech Forge - Learn. Code. Build. Grow.',
+  title: 'Forge Digital Solution - Learn. Code. Build. Grow.',
   description: 'Empowering Students & Businesses with Programming, Internships, and IT Solutions',
 }
 

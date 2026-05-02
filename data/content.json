@@ -1,0 +1,68 @@
+{
+  "navbar": {
+    "brandName": "Forge",
+    "links": [
+      {
+        "name": "Home",
+        "href": "/",
+        "icon": "Home"
+      },
+      {
+        "name": "Services",
+        "href": "/services",
+        "icon": "Briefcase"
+      },
+      {
+        "name": "Courses",
+        "href": "/courses",
+        "icon": "BookOpen"
+      },
+      {
+        "name": "Practice",
+        "href": "/practice",
+        "icon": "Code"
+      },
+      {
+        "name": "IDE",
+        "href": "/ide",
+        "icon": "Terminal"
+      },
+      {
+        "name": "Assessment",
+        "href": "/assessment",
+        "icon": "Trophy"
+      },
+      {
+        "name": "Internships",
+        "href": "/internships",
+        "icon": "Briefcase"
+      },
+      {
+        "name": "Certificates",
+        "href": "/certificates",
+        "icon": "Award"
+      }
+    ]
+  },
+  "hero": {
+    "title": "Forge Digital Solution - The Best",
+    "badge": "Next Generation Tech Education",
+    "typewriter": [
+      "Learn. Code. Build. Grow — All in One Place.",
+      "Master Industry-Leading Technologies.",
+      "Empowering Your Digital Future.",
+      "Join the Next Wave of Tech Innovators."
+    ],
+    "ctaPrimary": "Start Your Journey",
+    "ctaSecondary": "Our Solutions"
+  },
+  "footer": {
+    "brandName": "Forge Digital Solution",
+    "description": "Empowering Students & Businesses with cutting-edge technology education and solutions.",
+    "copyright": "© 2025 Forge Digital Solution. Empowering Students & Businesses.",
+    "email": "forgedigsoluton@gmail.com",
+    "phone": "+91 86105 55833",
+    "address": "Palakad Main Road, Pollachi",
+    "githubUrl": "https://github.com/sanjaik1848/forgedig"
+  }
+}

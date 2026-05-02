@@ -1,4 +1,4 @@
-# 🚀 Inai One - Futuristic Dark Mode Website
+# 🚀 Forge Digital Solution - Futuristic Dark Mode Website
 
 A stunning, fully responsive website built with Next.js 14, React, TypeScript, Tailwind CSS, and Framer Motion featuring a futuristic dark theme with neon green accents.
 
@@ -187,10 +187,10 @@ This project is open source and available under the MIT License.
 
 ## 🤝 Support
 
-For support, email info@inaione.com or join our community channels.
+For support, email forgedigsoluton@gmail.com or join our community channels.
 
 ---
 
-**Made with ❤️ by Inai One**
+**Made with ❤️ by Forge Digital Solution**
 
 *Empowering Students & Businesses*

@@ -20,6 +20,7 @@ import {
   Youtube,
   Globe,
 } from 'lucide-react'
+import { useState, useEffect } from 'react'
 import AnimatedBackground from '@/components/AnimatedBackground'
 
 export default function ContactPage() {
@@ -32,6 +33,13 @@ export default function ContactPage() {
     message: '',
   })
   const [submitted, setSubmitted] = useState(false)
+  const [content, setContent] = useState<any>(null)
+
+  useEffect(() => {
+    fetch('/api/content')
+      .then(res => res.json())
+      .then(data => setContent(data))
+  }, [])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -50,7 +58,7 @@ ${formData.message}
     `
     
     // Open default email client
-    window.location.href = `mailto:info@techforge.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+    window.location.href = `mailto:${content?.footer?.email || 'forgedigsoluton@gmail.com'}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
     
     // Show success message
     setSubmitted(true)
@@ -78,23 +86,23 @@ ${formData.message}
     {
       icon: Mail,
       title: 'Email Us',
-      details: ['info@techforge.com', 'support@techforge.com'],
+      details: [content?.footer?.email || 'forgedigsoluton@gmail.com', 'support@forgedigsoluton.com'],
       color: 'from-blue-500 to-cyan-500',
-      action: () => window.location.href = 'mailto:info@techforge.com',
+      action: () => window.location.href = `mailto:${content?.footer?.email || 'forgedigsoluton@gmail.com'}`,
     },
     {
       icon: Phone,
       title: 'Call Us',
-      details: ['+91 98765 43210', '+91 98765 43211'],
+      details: [content?.footer?.phone || '+91 86105 55833', '+91 86105 55834'],
       color: 'from-green-500 to-teal-500',
-      action: () => window.location.href = 'tel:+919876543210',
+      action: () => window.location.href = `tel:${(content?.footer?.phone || '+918610555833').replace(/\s/g, '')}`,
     },
     {
       icon: MapPin,
       title: 'Visit Us',
-      details: ['Tech Park, Innovation Street', 'Bangalore, Karnataka 560001'],
+      details: [content?.footer?.address || 'Palakad Main Road', 'Pollachi'],
       color: 'from-purple-500 to-pink-500',
-      action: () => window.open('https://maps.google.com/?q=Tech+Park+Bangalore', '_blank'),
+      action: () => window.open(`https://maps.google.com/?q=${encodeURIComponent(content?.footer?.address || 'Palakad Main Road, Pollachi')}`, '_blank'),
     },
     {
       icon: Clock,
@@ -115,25 +123,12 @@ ${formData.message}
 
   const offices = [
     {
-      city: 'Bangalore',
-      address: 'Tech Park, Innovation Street, Bangalore, Karnataka 560001',
-      phone: '+91 98765 43210',
-      email: 'bangalore@techforge.com',
+      city: 'Pollachi',
+      address: content?.footer?.address || 'Palakad Main Road, Pollachi',
+      phone: content?.footer?.phone || '+91 86105 55833',
+      email: content?.footer?.email || 'forgedigsoluton@gmail.com',
       isHeadquarters: true,
     },
-    {
-      city: 'Mumbai',
-      address: 'Business Hub, Marine Drive, Mumbai, Maharashtra 400001',
-      phone: '+91 98765 43212',
-      email: 'mumbai@techforge.com',
-      isHeadquarters: false,
-    },
-    {
-      city: 'Delhi',
-      address: 'Corporate Center, Connaught Place, New Delhi 110001',
-      phone: '+91 98765 43213',
-      email: 'delhi@techforge.com',
-      isHeadquarters: false,
     },
   ]
 

@@ -51,7 +51,7 @@ export default function CertificatesPage() {
   }
 
   const shareCertificate = (cert: any) => {
-    const shareUrl = `https://techforge.com/verify/${cert.certificateId}`
+    const shareUrl = `https://forgedigitalsolution.com/verify/${cert.certificateId}`
     navigator.clipboard.writeText(shareUrl)
     alert('Certificate verification link copied to clipboard!')
   }
@@ -76,7 +76,7 @@ export default function CertificatesPage() {
             </h1>
           </div>
           <p className="text-xl text-text-muted max-w-2xl mx-auto">
-            View, download, and share your Tech Forge certificates
+            View, download, and share your Forge Digital Solution certificates
           </p>
         </motion.div>
 
@@ -265,13 +265,13 @@ export default function CertificatesPage() {
                           Certificate ID: <span className="font-mono font-semibold text-primary">{cert.certificateId}</span>
                         </p>
                         <p className="text-gray-500 text-xs mt-2">
-                          Verify at: techforge.com/verify/{cert.certificateId}
+                          Verify at: forgedigitalsolution.com/verify/{cert.certificateId}
                         </p>
                       </div>
 
                       {/* Tech Forge Logo/Brand */}
                       <div className="mt-8">
-                        <p className="text-2xl font-bold text-primary">Tech Forge</p>
+                        <p className="text-2xl font-bold text-primary">Forge Digital Solution</p>
                         <p className="text-gray-600 text-sm">Learn. Code. Build. Grow.</p>
                       </div>
                     </div>

@@ -49,7 +49,7 @@ console.log(fibonacci(10));`
               delay: i * 0.5,
             }}
           >
-            {`const code = () => { return "Tech Forge"; }`}
+            {`const code = () => { return "Forge Digital Solution"; }`}
           </motion.div>
         ))}
       </div>
@@ -79,7 +79,7 @@ console.log(fibonacci(10));`
           <div className="bg-dark-100 px-6 py-4 flex items-center justify-between border-b border-primary/20">
             <div className="flex items-center gap-3">
               <Terminal className="text-primary" size={20} />
-              <span className="font-semibold">Tech Forge IDE</span>
+              <span className="font-semibold">Forge Digital Solution IDE</span>
             </div>
             <div className="flex gap-2">
               <div className="w-3 h-3 rounded-full bg-red-500" />

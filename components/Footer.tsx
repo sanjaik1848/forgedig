@@ -1,9 +1,17 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, Linkedin, Youtube, Instagram, ExternalLink } from 'lucide-react'
+import { Mail, Phone, MapPin, Linkedin, Youtube, Instagram, ExternalLink, Github } from 'lucide-react'
+import { useState, useEffect } from 'react'
 
 export default function Footer() {
+  const [content, setContent] = useState<any>(null)
+
+  useEffect(() => {
+    fetch('/api/content')
+      .then(res => res.json())
+      .then(data => setContent(data.footer))
+  }, [])
   const quickLinks = [
     { name: 'Home', href: '/' },
     { name: 'Courses', href: '/courses' },
@@ -17,6 +25,7 @@ export default function Footer() {
     { icon: Linkedin, href: '#', color: 'hover:text-[#0A66C2]' },
     { icon: Youtube, href: '#', color: 'hover:text-[#FF0000]' },
     { icon: Instagram, href: '#', color: 'hover:text-[#E4405F]' },
+    { icon: Github, href: content?.githubUrl || 'https://github.com/sanjaik1848/forgedig', color: 'hover:text-[#FFFFFF]' },
   ]
 
   return (
@@ -44,10 +53,10 @@ export default function Footer() {
               }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              <span className="text-primary">Tech Forge</span>
+              <span className="text-primary">{content?.brandName || 'Forge Digital Solution'}</span>
             </motion.h3>
             <p className="text-text-muted mb-4">
-              Empowering Students & Businesses with cutting-edge technology education and solutions.
+              {content?.description || 'Empowering Students & Businesses with cutting-edge technology education and solutions.'}
             </p>
             <div className="flex gap-3 sm:gap-4">
               {socialLinks.map((social, index) => {
@@ -105,21 +114,20 @@ export default function Footer() {
             <ul className="space-y-2 sm:space-y-3">
               <li className="flex items-start gap-2 sm:gap-3 text-text-muted text-sm sm:text-base">
                 <Mail className="text-primary flex-shrink-0 mt-1" size={16} />
-                <a href="mailto:info@techforge.com" className="hover:text-primary transition-colors">
-                  info@techforge.com
+                <a href={`mailto:${content?.email || 'info@forgedigitalsolution.com'}`} className="hover:text-primary transition-colors">
+                  {content?.email || 'info@forgedigitalsolution.com'}
                 </a>
               </li>
               <li className="flex items-start gap-2 sm:gap-3 text-text-muted text-sm sm:text-base">
                 <Phone className="text-primary flex-shrink-0 mt-1" size={16} />
-                <a href="tel:+919876543210" className="hover:text-primary transition-colors">
-                  +91 98765 43210
+                <a href={`tel:${content?.phone?.replace(/\s/g, '') || '+918610555833'}`} className="hover:text-primary transition-colors">
+                  {content?.phone || '+91 86105 55833'}
                 </a>
               </li>
               <li className="flex items-start gap-2 sm:gap-3 text-text-muted text-sm sm:text-base">
                 <MapPin className="text-primary flex-shrink-0 mt-1" size={16} />
                 <span>
-                  Tech Park, Innovation Street<br />
-                  Bangalore, Karnataka 560001
+                  {content?.address || 'Palakad Main Road, Pollachi'}
                 </span>
               </li>
             </ul>
@@ -162,7 +170,7 @@ export default function Footer() {
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           <p className="text-sm sm:text-base text-text-muted">
-            © 2025 <span className="text-primary font-semibold">Tech Forge</span>. Empowering Students & Businesses.
+            {content?.copyright || '© 2025 Forge Digital Solution. Empowering Students & Businesses.'}
           </p>
           <p className="text-text-muted text-xs sm:text-sm mt-2">
             Made with <span className="text-red-500">❤️</span> for the future of technology

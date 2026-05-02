@@ -94,7 +94,7 @@ export default function SignupPage() {
             <CheckCircle className="text-dark-100" size={32} />
           </motion.div>
           <h2 className="text-2xl font-bold text-primary mb-2">Account Created!</h2>
-          <p className="text-text-muted">Welcome to Tech Forge! Redirecting...</p>
+          <p className="text-text-muted">Welcome to Forge Digital Solution! Redirecting...</p>
         </motion.div>
       </main>
     )
@@ -121,7 +121,7 @@ export default function SignupPage() {
               <User className="text-dark-100" size={32} />
             </motion.div>
             <h1 className="text-3xl sm:text-4xl font-bold text-primary mb-2">Create Account</h1>
-            <p className="text-text-muted">Join Tech Forge and start your learning journey</p>
+            <p className="text-text-muted">Join Forge Digital Solution and start your learning journey</p>
           </div>
 
           {/* Error Message */}

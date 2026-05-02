@@ -16,7 +16,7 @@ export default function TestimonialsSection() {
       role: 'Full Stack Developer',
       company: 'Tech Solutions Inc.',
       image: '👩‍💻',
-      quote: 'Tech Forge transformed my career! The hands-on projects and expert mentorship helped me land my dream job as a Full Stack Developer.',
+      quote: 'Forge Digital Solution transformed my career! The hands-on projects and expert mentorship helped me land my dream job as a Full Stack Developer.',
       type: 'student',
     },
     {
@@ -30,7 +30,7 @@ export default function TestimonialsSection() {
     {
       name: 'Ananya Patel',
       role: 'IoT Intern',
-      company: 'Tech Forge',
+      company: 'Forge Digital Solution',
       image: '👩‍🔬',
       quote: 'The IoT internship program was incredible. I built real-world projects and gained practical skills that made me industry-ready.',
       type: 'student',

@@ -18,7 +18,7 @@ import {
 } from 'lucide-react'
 
 export default function IDEPage() {
-  const [code, setCode] = useState(`// Welcome to Tech Forge Online IDE
+  const [code, setCode] = useState(`// Welcome to Forge Digital Solution Online IDE
 // Start coding here!
 
 function greet(name) {

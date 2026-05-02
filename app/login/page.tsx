@@ -94,7 +94,7 @@ export default function LoginPage() {
               <User className="text-dark-100" size={32} />
             </motion.div>
             <h1 className="text-3xl sm:text-4xl font-bold text-primary mb-2">Welcome Back</h1>
-            <p className="text-text-muted">Sign in to your Tech Forge account</p>
+            <p className="text-text-muted">Sign in to your Forge Digital Solution account</p>
           </div>
 
           {/* Error Message */}

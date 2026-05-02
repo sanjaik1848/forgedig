@@ -65,7 +65,7 @@ export default function HighlightsSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          Why Choose <span className="text-primary">Tech Forge?</span>
+          Why Choose <span className="text-primary">Forge Digital Solution?</span>
         </motion.h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
