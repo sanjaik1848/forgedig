@@ -2,6 +2,7 @@
 
 import HeroSection from '@/components/HeroSection'
 import WhatWeOfferSection from '@/components/WhatWeOfferSection'
+import FeatureShowcaseSlider from '@/components/FeatureShowcaseSlider'
 import HighlightsSection from '@/components/HighlightsSection'
 import ImageGallerySection from '@/components/ImageGallerySection'
 import HorizontalScrollSection from '@/components/HorizontalScrollSection'
@@ -21,6 +22,7 @@ export default function Home() {
       <div className="relative z-10">
         <HeroSection />
         <WhatWeOfferSection />
+        <FeatureShowcaseSlider />
         {/* Temporarily hidden for Launching Soon
         <HighlightsSection />
         <ImageGallerySection />
