@@ -19,6 +19,7 @@ export default function Home() {
       <AnimatedBackground />
       <div className="relative z-10">
         <HeroSection />
+        {/* Temporarily hidden for Launching Soon
         <HighlightsSection />
         <ImageGallerySection />
         <HorizontalScrollSection />
@@ -27,9 +28,10 @@ export default function Home() {
         <IDESection />
         <InternshipServicesSection />
         <TestimonialsSection />
+        */}
         <Footer />
       </div>
-      <ChatbotAssistant />
+      {/* <ChatbotAssistant /> */}
     </main>
   )
 }

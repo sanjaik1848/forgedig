@@ -45,16 +45,15 @@
     ]
   },
   "hero": {
-    "title": "Forge Digital Solution - The Best",
-    "badge": "Next Generation Tech Education",
+    "title": "Website is Launching Soon",
+    "badge": "Coming Soon",
     "typewriter": [
-      "Learn. Code. Build. Grow — All in One Place.",
-      "Master Industry-Leading Technologies.",
-      "Empowering Your Digital Future.",
-      "Join the Next Wave of Tech Innovators."
+      "We are working hard to bring you something amazing.",
+      "Stay tuned for the launch of Forge Digital Solution.",
+      "Empowering Your Digital Future."
     ],
-    "ctaPrimary": "Start Your Journey",
-    "ctaSecondary": "Our Solutions"
+    "ctaPrimary": "Notify Me",
+    "ctaSecondary": "Follow Updates"
   },
   "footer": {
     "brandName": "Forge Digital Solution",
