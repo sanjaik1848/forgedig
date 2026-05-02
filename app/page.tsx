@@ -1,6 +1,7 @@
 'use client'
 
 import HeroSection from '@/components/HeroSection'
+import WhatWeOfferSection from '@/components/WhatWeOfferSection'
 import HighlightsSection from '@/components/HighlightsSection'
 import ImageGallerySection from '@/components/ImageGallerySection'
 import HorizontalScrollSection from '@/components/HorizontalScrollSection'
@@ -19,6 +20,7 @@ export default function Home() {
       <AnimatedBackground />
       <div className="relative z-10">
         <HeroSection />
+        <WhatWeOfferSection />
         {/* Temporarily hidden for Launching Soon
         <HighlightsSection />
         <ImageGallerySection />
